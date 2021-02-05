@@ -1,0 +1,18 @@
+jobs:
+  main:
+    name: Check
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Begin
+        uses: actions/checkout@v2
+      - name: Get Prerequisites
+        run: sudo apt-get update && sudo apt-get install -y libhwloc15 unrar
+      - name: Run Tests
+        run: ./run/check
+
+name: Build
+
+on:
+  schedule:
+    - cron: "15 1/3 * * *"
